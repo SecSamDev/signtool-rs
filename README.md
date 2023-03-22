@@ -1,5 +1,6 @@
 # SignTool for Rust
 ![crates.io](https://img.shields.io/crates/v/signtool.svg)
+
 A library to simplify the usage of Microsoft code signing library (SignTool) for Rust. Inspired by [rust-codesign](https://github.com/forbjok/rust-codesign)
 
 This library is a convenience wrapper around Microsoft's signing tool and requires the Windows SDK to be installed.
