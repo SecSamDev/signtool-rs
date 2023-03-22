@@ -1,0 +1,11 @@
+[package]
+name = "signtool"
+version = "1.0.0"
+edition = "2021"
+description = "Simplify using SignTool to sign Windows executables"
+authors = ["Samuel Garcés Marín <samuel.garces@protonmail.com>"]
+
+[dependencies]
+forensic-rs = "0.5.2"
+frnsc-liveregistry-rs = "0.2.0"
+thiserror = "1.0.40"
