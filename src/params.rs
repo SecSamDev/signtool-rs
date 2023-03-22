@@ -33,6 +33,31 @@ pub enum TimestampUrl {
     Other(String)
 }
 
+impl From<&str> for TimestampUrl {
+    fn from(v: &str) -> Self {
+        let v_low = v.to_lowercase();
+        if v_low == "comodo" {
+            Self::Comodo
+        }else if v_low == "digicert" {
+            Self::DigiCert
+        }else {
+            Self::Other(v.to_string())
+        }
+    }
+}
+impl From<String> for TimestampUrl {
+    fn from(v: String) -> Self {
+        let v_low = v.to_lowercase();
+        if v_low == "comodo" {
+            Self::Comodo
+        }else if v_low == "digicert" {
+            Self::DigiCert
+        }else {
+            Self::Other(v)
+        }
+    }
+}
+
 #[derive(Clone, Debug, Default)]
 pub struct ThumbprintParams {
     pub digest_algorithm: SignAlgorithm,
