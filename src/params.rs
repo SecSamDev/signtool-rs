@@ -1,4 +1,4 @@
-#[derive(Clone, Debug, Default)]
+#[derive(Clone, Debug, Default, PartialEq)]
 pub enum SignAlgorithm {
     Sha512,
     #[default]
@@ -25,7 +25,7 @@ impl Into<&'static str> for SignAlgorithm {
     }
 }
 
-#[derive(Clone, Debug, Default)]
+#[derive(Clone, Debug, Default, PartialEq)]
 pub enum TimestampUrl {
     #[default]
     Comodo,
@@ -79,4 +79,15 @@ pub enum SignParams {
     File(FileCertParams),
     #[default]
     None
+}
+
+
+#[test]
+fn from_timestamp_url_to_param() {
+    let timestamp : TimestampUrl = "http://timestamp.digicert.com".into();
+    assert_eq!(TimestampUrl::Other("http://timestamp.digicert.com".to_string()), timestamp);
+    let timestamp : TimestampUrl = "CoMoDo".into();
+    assert_eq!(TimestampUrl::Comodo, timestamp);
+    let timestamp : TimestampUrl = "DigiCert".into();
+    assert_eq!(TimestampUrl::DigiCert, timestamp);
 }

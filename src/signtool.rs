@@ -71,6 +71,7 @@ fn args_from_params(params: &SignParams) -> Result<Vec<&str>, SignToolError> {
         SignParams::Thumbprint(params) => {
             vec![
                 "sign",
+                "/a",
                 "/fd", params.digest_algorithm.clone().into(),
                 "/sha1", &params.certificate_thumbprint[..],
                 "/t", timestamp_url(&params.timestamp_url)
@@ -79,6 +80,7 @@ fn args_from_params(params: &SignParams) -> Result<Vec<&str>, SignToolError> {
         SignParams::File(params) => {
             let mut args = vec![
                 "sign",
+                "/a",
                 "/fd", params.digest_algorithm.clone().into(),
                 "/f", &params.certificate_location[..],
                 "/t", timestamp_url(&params.timestamp_url)
