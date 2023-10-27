@@ -8,6 +8,6 @@ repository = "https://github.com/SecSamDev/signtool-rs"
 license = "MIT"
 
 [dependencies]
-forensic-rs = "0.5.2"
-frnsc-liveregistry-rs = "0.2.0"
+forensic-rs = "0"
+frnsc-liveregistry-rs = "0"
 thiserror = "1.0.40"
