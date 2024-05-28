@@ -91,6 +91,17 @@ fn args_from_params(params: &SignParams) -> Result<Vec<&str>, SignToolError> {
             }
             args
         },
+        SignParams::Csp(params) => {
+            vec![
+                "sign",
+                "/csp", params.name.as_str(),
+                "/kc", params.keypair_alias.as_str(),
+                "/fd", params.digest_algorithm.clone().into(),
+                "/f", &params.certificate_location[..],
+                "/tr", timestamp_url(&params.timestamp_url),
+                "/td", params.timestamp_digest_algorithm.clone().into()
+            ]
+        },
         SignParams::None => return Err(SignToolError::Other(format!("Cannot sign an executable without parameters"))),
     })
 }

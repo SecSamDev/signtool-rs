@@ -1,6 +1,6 @@
 [package]
 name = "signtool"
-version = "1.1.0"
+version = "1.2.0"
 edition = "2021"
 description = "Simplify using SignTool to sign Windows executables"
 authors = ["Samuel Garcés Marín <samuel.garces@protonmail.com>"]

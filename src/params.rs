@@ -73,10 +73,24 @@ pub struct FileCertParams {
     pub certificate_password : Option<String>,
     pub timestamp_url: TimestampUrl,
 }
+/// Sign using CSP.
+/// 
+/// https://docs.digicert.com/en/digicert-keylocker/signing-tools/sign-authenticode-files-with-signtool-on-windows.html
+#[derive(Clone, Debug, Default)]
+pub struct CspParams {
+    pub name: String,
+    pub keypair_alias: String,
+    pub digest_algorithm: SignAlgorithm,
+    /// Disk location of the Certificate File
+    pub certificate_location: String,
+    pub timestamp_url: TimestampUrl,
+    pub timestamp_digest_algorithm: SignAlgorithm,
+}
 #[derive(Clone, Debug, Default)]
 pub enum SignParams {
     Thumbprint(ThumbprintParams),
     File(FileCertParams),
+    Csp(CspParams),
     #[default]
     None
 }
